@@ -46,8 +46,8 @@ body{min-height: 100vh; display: flex; justify-content: center; align-items: cen
 
     .main-img{height: 400px;}
 
-    .thumbnails-container{gap: 0.5rem; justify-content: flex-start;}
-    .thumbnail{width: 80px; height: 80px;}
+    .thumbnails-container{gap: 0.5rem; justify-content: flex-start; flex-wrap: wrap; max-width: 100%;}
+    .thumbnail{width: 80px; height: 80px; margin-bottom: 0.5rem;}
 
     .product-info{flex: 1;}
 
