@@ -1,3 +1,5 @@
+const loadingScreen = document.getElementById('loadingScreen');
+const container = document.getElementById('container');
 const mainImg = document.getElementById('mainImg');
 const thumbnailsContainer = document.getElementById('thumbnailsContainer');
 const navLeft = document.getElementById('navLeft');
@@ -21,6 +23,8 @@ const fetchImages = async () => {
         images = data.map(img => img.download_url);
         updateCarousel(currentImageIndex);
         createThumbnails();
+        loadingScreen.style.display = 'none';
+        container.style.display = 'flex';
     } catch (error) {
         console.log('Error while fethcing images', error)
     }
