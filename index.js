@@ -6,6 +6,9 @@ const navRight = document.getElementById('navRight');
 let currentImageIndex = 0;
 let images = [];
 
+let touchStartX = 0;
+let touchEndX = 0;
+
 const fetchImages = async () => {
     try {
         const res = await fetch('https://picsum.photos/v2/list?page=1&limit=5');
@@ -56,6 +59,24 @@ navLeft.addEventListener('click', () => {
 navRight.addEventListener('click', () => {
     currentImageIndex === images.length - 1 ? currentImageIndex = 0 : currentImageIndex += 1;
     updateCarousel(currentImageIndex);
+})
+
+const checkDirection = () => {
+    if(touchEndX < touchStartX){
+        navRight.click();
+    }
+    if(touchEndX > touchStartX){
+        navLeft.click();
+    }
+}
+
+mainImg.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+})
+
+mainImg.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    checkDirection();
 })
 
 fetchImages();
