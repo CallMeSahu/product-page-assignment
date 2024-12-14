@@ -7,7 +7,66 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Product Page</h1>
+    <div class="container">
+        <div class="product-gallary">
+            <div class="main-image-container">
+                <button class="nav-btn nav-left" id="navLeft">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                    </svg>                      
+                </button>
+                <img src="https://picsum.photos/id/0/5000/3333" alt="Main Product Image" class="main-img" id="mainImg">
+                <button class="nav-btn nav-right" id="navRight">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                    </svg>                                           
+                </button>
+            </div>
+            <div class="thumbnails-container" id="thumbnailsContainer">
+                <img src="https://picsum.photos/id/4/5000/3333" alt="" class="thumbnail">
+                <img src="https://picsum.photos/id/4/5000/3333" alt="" class="thumbnail">
+                <img src="https://picsum.photos/id/4/5000/3333" alt="" class="thumbnail">
+                <img src="https://picsum.photos/id/4/5000/3333" alt="" class="thumbnail">
+                <img src="https://picsum.photos/id/4/5000/3333" alt="" class="thumbnail thumbnail-active">
+            </div>
+        </div>
+        <div class="product-info">
+            <p class="product-name">The Odalia Ring</p>
+            <p class="product-price">₹55,999</p>
+            <p class="product-description">Diamond Ring in 18Kt White Gold (2.38 grams) with Diamonds (0.2930 Ct). Featuring a sleek and elegant design, this ring is crafted to perfection, making it an ideal choice for both special occasions and everyday wear. The sparkling diamonds are precisely set to enhance their brilliance, offering timeless sophistication and unmatched charm.</p>
+
+            <div class="product-variant">
+                <label for="size-select">Size: </label>
+                <select id="size-select">
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                </select>
+            </div>
+
+            <div class="quantity-selector">
+                <label for="quantity">Quantity: </label>
+                <div class="quantity-controls">
+                    <button id="decreaseQuantity">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" />
+                        </svg>                                                  
+                    </button>
+                    <input type="number" id="quantity" value="1" min="1" max="5">
+                    <button id="increaseQuantity">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                        </svg> 
+                    </button>
+                </div>                
+            </div>
+
+            <div class="add-to-cart" id="addToCartBtn">Add to Cart</div>
+            <div class="cart-confirmation" id="cartConfirmation">Items added to Cart</div>
+        </div>
+    </div>
     <script src="./index.js" type='text/javascript'></script>
 </body>
 </html>
