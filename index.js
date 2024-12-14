@@ -20,7 +20,15 @@ const fetchImages = async () => {
     try {
         const res = await fetch('https://picsum.photos/v2/list?page=1&limit=5');
         const data = await res.json();
-        images = data.map(img => img.download_url);
+        const imagePromises = data.map(img => {
+            return new Promise((resolve, reject) => {
+                const image = new Image();
+                image.onload = () => resolve(img.download_url);
+                image.onerror = reject;
+                image.src = img.download_url;
+            });
+        });        
+        images = await Promise.all(imagePromises);        
         updateCarousel(currentImageIndex);
         createThumbnails();
         loadingScreen.style.display = 'none';
