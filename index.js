@@ -1,5 +1,7 @@
 const mainImg = document.getElementById('mainImg');
 const thumbnailsContainer = document.getElementById('thumbnailsContainer');
+const navLeft = document.getElementById('navLeft');
+const navRight = document.getElementById('navRight');
 
 let currentImageIndex = 0;
 let images = [];
@@ -9,7 +11,7 @@ const fetchImages = async () => {
         const res = await fetch('https://picsum.photos/v2/list?page=1&limit=5');
         const data = await res.json();
         images = data.map(img => img.download_url);
-        updateCarousal(currentImageIndex);
+        updateCarousel(currentImageIndex);
         createThumbnails();
     } catch (error) {
         console.log('Error while fethcing images', error)
@@ -31,7 +33,7 @@ const createThumbnails = () => {
     updateActiveThumbnail(currentImageIndex);
 }
 
-const updateCarousal = index => {
+const updateCarousel = index => {
     if(images.length !== 0){
         mainImg.src = images[index];
         updateActiveThumbnail(index);
@@ -45,5 +47,15 @@ const updateActiveThumbnail = index => {
         thumbnails[index].classList.add('thumbnail-active');
     }   
 }
+
+navLeft.addEventListener('click', () => {
+    currentImageIndex === 0 ? currentImageIndex = images.length - 1 : currentImageIndex -= 1;
+    updateCarousel(currentImageIndex);
+})
+
+navRight.addEventListener('click', () => {
+    currentImageIndex === images.length - 1 ? currentImageIndex = 0 : currentImageIndex += 1;
+    updateCarousel(currentImageIndex);
+})
 
 fetchImages();
