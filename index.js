@@ -5,6 +5,8 @@ const navRight = document.getElementById('navRight');
 const decreaseQuantity = document.getElementById('decreaseQuantity');
 const increaseQuantity = document.getElementById('increaseQuantity');
 const quantity = document.getElementById('quantity');
+const addToCart = document.getElementById('addToCart');
+const cartConfirmation = document.getElementById('cartConfirmation');
 
 let currentImageIndex = 0;
 let images = [];
@@ -92,6 +94,14 @@ increaseQuantity.addEventListener('click', () => {
     if(parseInt(quantity.value) < quantity.max){
         quantity.value = parseInt(quantity.value) + 1
     }
+})
+
+addToCart.addEventListener('click', () => {
+    cartConfirmation.textContent = `${quantity.value} Items Added to Cart!`;
+    cartConfirmation.style.display = 'block';
+    setTimeout(() => {
+        cartConfirmation.style.display = 'none';
+    }, 3000)
 })
 
 fetchImages();
