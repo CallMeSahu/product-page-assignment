@@ -2,6 +2,9 @@ const mainImg = document.getElementById('mainImg');
 const thumbnailsContainer = document.getElementById('thumbnailsContainer');
 const navLeft = document.getElementById('navLeft');
 const navRight = document.getElementById('navRight');
+const decreaseQuantity = document.getElementById('decreaseQuantity');
+const increaseQuantity = document.getElementById('increaseQuantity');
+const quantity = document.getElementById('quantity');
 
 let currentImageIndex = 0;
 let images = [];
@@ -77,6 +80,18 @@ mainImg.addEventListener('touchstart', e => {
 mainImg.addEventListener('touchend', e => {
     touchEndX = e.changedTouches[0].screenX;
     checkDirection();
+})
+
+decreaseQuantity.addEventListener('click', () => {
+    if(parseInt(quantity.value) > quantity.min){
+        quantity.value = parseInt(quantity.value) - 1;
+    }
+})
+
+increaseQuantity.addEventListener('click', () => {
+    if(parseInt(quantity.value) < quantity.max){
+        quantity.value = parseInt(quantity.value) + 1
+    }
 })
 
 fetchImages();
